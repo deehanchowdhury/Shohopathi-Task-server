@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>LMS</title>
+</head>
+
+<body>
+    
+    <h1>Admin Portal</h1>
+    <h2>Update Book</h2>
+
+    <form action="/updated" method="post">
+        <input type="text" style="display: none;"
+            name="_id"
+            value= "<%= data._id %>">
+        <input type="text" placeholder="Book Name"
+            name="BookName">
+        <input type="text" placeholder="Book Author"
+            name="Author">
+        <input type="text" placeholder="Genre"
+            name="Genre">
+        <input type="text" placeholder="link"
+        name="pdf">
+        
+        <button type="submit">Update</button>
+    </form>
+
+</body>
+
+</html>

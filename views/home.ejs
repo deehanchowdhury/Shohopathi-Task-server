@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>LMS</title>
+</head>
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td,
+	th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+</style>
+
+<body>
+	<h1>Admin Portal</h1>
+	
+	<h2>Add Book</h2>
+
+	<form action="/" method="post">
+
+		<input type="text" placeholder="Book Name"
+			name="BookName">
+		<input type="text" placeholder="Book Author"
+			name="Author">
+		<input type="text" placeholder="Genre"
+		name="Genre">
+		<input type="text" placeholder="Link"
+		name="pdf">
+		<button type="submit">Add</button>
+	</form>
+
+	<h2>All Books</h2>
+	<table>
+		<tr>
+			
+			<th>Book Name</th>
+			<th>Book Author</th>
+			<th>Book Genre</th>
+			<th>Book Link</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+		<% data.forEach(element=> { %>
+			<tr>
+				
+				<td>
+					<%= element.BookName %>
+				</td>
+				<td>
+					<%= element.Author %>
+				</td>
+				<td>
+					<%= element.Genre %>
+				</td>
+				<td>
+					<a href=<%= element.pdf %> class="btn btn-primary" role="button">Link</a>
+					<!-- <%= element.pdf %> -->
+				</td>
+				<td>
+					 <form action="/update" method="post">
+						<input type="text" style="display: none;"
+							name="_id"
+							value="<%= element._id %>">
+						<button type="submit">Update</button>
+					</form>
+				</td>
+				<td>
+					<form action="/delete" method="post">
+						<input type="text" style="display: none;"
+						name="_id"
+						value="<%= element._id %>">
+						<button type="submit">Delete</button>
+					</form>
+				</td>
+			</tr>
+			<% }) %>
+	</table>
+
+	
+</body>
+
+</html>
